@@ -1,0 +1,102 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "The user tweeter storage API.",
+    "version": "1.0.0",
+    "title": "The user tweeter storage service"
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Consumer Header",
+      "description": "Cra Consumer Controller"
+    },
+    {
+      "name": "Consumer Statement",
+      "description": "Cra Consume Statement Controller"
+    },
+    {
+      "name": "File Freeze",
+      "description": "File Freeze Controller"
+    },
+    {
+      "name": "Freeze Party Lift",
+      "description": "Freeze Party Lift Controller"
+    },
+    {
+      "name": "Report Generation",
+      "description": "Cra Report Generation Controller"
+    },
+    {
+      "name": "Initial Fraud Alert",
+      "description": "Initial Fraud Alert Controller"
+    },
+    {
+      "name": "Extended Fraud Alert",
+      "description": "Extended Fraud Alert Controller"
+    },
+    {
+      "name": "Active Duty Alert",
+      "description": "Active Duty Alert Controller"
+    },
+    {
+      "name": "Full Consumer File",
+      "description": "Cra Full Consumer File Controller"
+    },
+    {
+      "name": "Dispute",
+      "description": "Cra Disputes Controller"
+    }
+  ],
+  "paths": {
+    "/tweet": {
+      "get": {
+        "tags": [
+          "GetTweet"
+        ],
+        "summary": "Find tweet",
+        "operationId": "getTweetById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "tweetId",
+            "in": "query",
+            "description": "the tweet id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "404": {
+              "description": "The tweet has not been found by the provided id",
+              "schema": {
+                "$ref": "#/definitions/ErrorResponse"
+              }
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
